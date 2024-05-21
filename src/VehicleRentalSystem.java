@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class VehicleRentalSystem {
 
-    
     public static void main(String[] args) throws Exception {
         try (Scanner scanner = new Scanner(System.in)) {
             String choice;
@@ -27,17 +26,24 @@ public class VehicleRentalSystem {
                     case "1" -> {
                         Car car = collectCarDetails(scanner);
                         displayVehicle(car);
+                        System.out.println("");//Make a space between input & display
+                        break;
                     }
                     case "2" -> {
-                        
+                        Motorcycle motorcycle = collectMotorcycleDetails(scanner);
+                        displayVehicle(motorcycle);
+                        System.out.println("");//Make a space between input & display
                         break;
                     }
                     case "3" -> {
                         
+                        System.out.println("");//Make a space between input & display
                         break;
                     }
                     default -> {
+                        System.out.println("");//Make a space between input & display
                         System.out.println("Invalid choice. Please try again.");
+                        System.out.println("");//Make a space between input & display
                     }
                 }
                 
@@ -55,12 +61,15 @@ public class VehicleRentalSystem {
         if (vehicle instanceof Car car) {
             System.out.println("Number of doors: " + car.getNumberOfDoos());
             System.out.println("Fuel type: " + car.getFuelTypes());
+        } else if (vehicle instanceof Motorcycle motorcycle) {
+            System.out.println("Number of wheels: " + motorcycle.getNumberOfWheels());
+            System.out.println("Motorcycle type: " + motorcycle.getMotorCycleType());
         }
     }
 
     private static VehicleDetails collectCommonDetails(Scanner scanner, String vehicleType) {
-        
-        System.out.println("\nEnter " + vehicleType + " details:");
+        System.out.println("");
+        System.out.println("Enter " + vehicleType + " details:");
         System.out.print("Make: ");
         String make = scanner.nextLine();
         System.out.print("Model: ");
@@ -68,7 +77,6 @@ public class VehicleRentalSystem {
         System.out.print("Year: ");
         int year = scanner.nextInt();
         scanner.nextLine();
-    
         return new VehicleDetails(make, model, year);
     }
     
@@ -79,8 +87,22 @@ public class VehicleRentalSystem {
         scanner.nextLine();
         System.out.print("Fuel type (petrol/diesel/electric): ");
         String fuelType = scanner.nextLine();
+        System.out.println("");//Make a space between input & display
         return new Car(vehicleDetails.getMake(), vehicleDetails.getModel(), vehicleDetails.getYear(), numberOfDoos, fuelType);
     }
+
+
+    public static Motorcycle collectMotorcycleDetails(Scanner scanner) {
+        VehicleDetails vehicleDetails = collectCommonDetails(scanner, "Motorcycle");
+        System.out.print("Number of wheels: ");
+        int numberOfWheels = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Motorcycle type (scooter/moped): ");
+        String motorCycleType = scanner.nextLine();
+        System.out.println("");//Make a space between input & display
+        return new Motorcycle(vehicleDetails.getMake(), vehicleDetails.getModel(), vehicleDetails.getYear(), numberOfWheels, motorCycleType);
+    }
+
 
     
 }
