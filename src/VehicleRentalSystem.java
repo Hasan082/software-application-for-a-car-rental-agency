@@ -148,10 +148,17 @@ public class VehicleRentalSystem {
         return new Car(vehicleDetails.getMake(), vehicleDetails.getModel(), vehicleDetails.getYear(), numberOfDoors, fuelType);
     }
 
-    //Collect Motorcycle details
+    /**
+     * Collects the details of a Motorcycle and returns them as a Motorcycle object.
+     * @param scanner the scanner to read the input from
+     * @return the Motorcycle object with the details collected
+     */
     public static Motorcycle collectMotorcycleDetails(Scanner scanner) {
+        // Collects the details of a Motorcycle
         VehicleDetails vehicleDetails = collectCommonDetails(scanner, "Motorcycle");
+        // Number of wheels
         int numberOfWheels = getIntInput(scanner, "Number of wheels: ");
+        // Motorcycle type
         System.out.print("Motorcycle type (scooter/moped): ");
         String motorCycleType = scanner.nextLine();
         System.out.println("");//Make a space between input & display
