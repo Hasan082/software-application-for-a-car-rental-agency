@@ -52,7 +52,16 @@ public class VehicleRentalSystem {
         }
         return value;
     }
-    //Main method
+
+    /**
+     * The main method is the entry point for the Vehicle Rental System program.
+     * It displays a menu to the user and allows them to select an option to
+     * either display the details of a car, motorcycle, or truck, or
+     * exit the program.
+     * 
+     * @param args the command line arguments
+     * @throws Exception if the program encounters an error
+     */
     public static void main(String[] args) throws Exception {
         try (Scanner scanner = new Scanner(System.in)) {
             String choice;
@@ -60,6 +69,7 @@ public class VehicleRentalSystem {
             System.out.println("Welcome to the Vehicle Rental System!\n");
             
             while (true) {
+                // Display menu
                 System.out.println("Please select an option from below:-");
                 System.out.println("1. Car");
                 System.out.println("2. Motorcycle");
@@ -72,6 +82,7 @@ public class VehicleRentalSystem {
                     break;
                 }
                 
+                // Process the user's choice
                 switch (choice) {
                     case "1" -> {
                         // Collect car details
@@ -84,7 +95,7 @@ public class VehicleRentalSystem {
                         // Collect motorcycle details
                         Motorcycle motorcycle = collectMotorcycleDetails(scanner);
                         // Display motorcycle details
-                        displayVehicle(motorcycle);                        
+                        displayVehicle(motorcycle);
                         break;
                     }
                     case "3" -> {
@@ -103,10 +114,11 @@ public class VehicleRentalSystem {
                 
             }
         }
-
     }
-
-    //Display vehicle
+    /**
+     * Displays the details of a Vehicle object.
+     * @param vehicle the Vehicle object to display the details of
+     */
     private static void displayVehicle(Vehicle vehicle) {
         System.out.println("Your Vehicle Details are below:");
         System.out.println("Make: " + vehicle.getMake());
@@ -119,7 +131,7 @@ public class VehicleRentalSystem {
         } else if (vehicle instanceof Motorcycle motorcycle) {
             System.out.println("Number of wheels: " + motorcycle.getNumberOfWheels());
             System.out.println("Motorcycle type: " + motorcycle.getMotorCycleType());
-        }else if(vehicle instanceof Truck truck){
+        } else if (vehicle instanceof Truck truck) {
             System.out.println("Car capacity: " + truck.getCarcapacity());
             System.out.println("Transmission type: " + truck.getTransmissionType());
         }
