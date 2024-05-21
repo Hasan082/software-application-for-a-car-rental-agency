@@ -6,7 +6,7 @@ public class Truck implements Vehicle, TruckVehicle {
     private double carcapacity;
     private String transmissionType;
 
-    public Truck(String make, String model, int year, int numberOfWheels, double carcapacity, String transmissionType){
+    public Truck(String make, String model, int year, int numberOfWheels, double carcapacity, String transmissionType) {
         this.make = make;
         this.model = model;
         this.year = year;
@@ -14,10 +14,9 @@ public class Truck implements Vehicle, TruckVehicle {
         this.transmissionType = transmissionType;
     }
 
-
     @Override
     public double getCarcapacity() {
-    return carcapacity;
+        return carcapacity;
     }
 
     @Override
@@ -32,7 +31,7 @@ public class Truck implements Vehicle, TruckVehicle {
 
     @Override
     public String getModel() {
-       return model;
+        return model;
     }
 
     @Override
