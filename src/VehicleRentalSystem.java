@@ -126,7 +126,12 @@ public class VehicleRentalSystem {
         System.out.println("");//Make a space between input & display
     }
 
-    //Collect Common vehicle details
+    /**
+     * Collects the common details of a vehicle such as make, model, and year.
+     * @param scanner the scanner to read the input from
+     * @param vehicleType the type of vehicle to collect the details for
+     * @return the VehicleDetails object with the details collected
+     */
     private static VehicleDetails collectCommonDetails(Scanner scanner, String vehicleType) {
         System.out.println("");
         System.out.println("Enter " + vehicleType + " details:");
