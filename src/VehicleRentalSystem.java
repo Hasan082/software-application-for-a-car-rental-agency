@@ -1,4 +1,9 @@
 
+import com.rental.Car;
+import com.rental.Motorcycle;
+import com.rental.Truck;
+import com.rental.Vehicle;
+import com.rental.VehicleDetails;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -78,6 +83,7 @@ public class VehicleRentalSystem {
                 System.out.print("Enter your choice: ");
                 choice = scanner.nextLine();
                 if (choice.equals("4")) {
+                    System.out.println("");//Make a space between input & display
                     System.out.println("Thank you for using the Vehicle Rental System!");
                     break;
                 }
@@ -115,6 +121,7 @@ public class VehicleRentalSystem {
             }
         }
     }
+
     /**
      * Displays the details of a Vehicle object.
      * @param vehicle the Vehicle object to display the details of
@@ -155,8 +162,14 @@ public class VehicleRentalSystem {
         return new VehicleDetails(make, model, year);
     }
 
-    //Collect Car  details
+  
+    /**
+     * Collects the details of a Car and returns them as a Car object.
+     * @param scanner the scanner to read the input from
+     * @return the Car object with the details collected
+     */
     public static Car collectCarDetails(Scanner scanner) {
+        // Collects the details of a Car
         VehicleDetails vehicleDetails = collectCommonDetails(scanner, "Car");
         int numberOfDoors = getIntInput(scanner, "Number of doors: ");
         System.out.print("Fuel type (petrol/diesel/electric): ");

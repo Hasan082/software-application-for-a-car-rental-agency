@@ -1,3 +1,4 @@
+package com.rental;
 public interface Vehicle {
 
    String getMake();
@@ -5,5 +6,4 @@ public interface Vehicle {
    String getModel();
 
    int getYear();
-
 }

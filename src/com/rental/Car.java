@@ -1,11 +1,12 @@
+package com.rental;
 public class Car implements Vehicle, CarVehicle {
 
     // fields
-    private String make;
-    private String model;
-    private int year;
-    private int numberOfDoors;
-    private String fuelTypes;
+    private final String make;
+    private final String model;
+    private final int year;
+    private final int numberOfDoors;
+    private final String fuelTypes;
 
     // constructor
     public Car(String make, String model, int year, int numberOfDoors, String fuelType) {
