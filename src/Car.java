@@ -4,15 +4,15 @@ public class Car implements Vehicle, CarVehicle {
     private String make;
     private String model;
     private int year;
-    private int numberOfDoos;
+    private int numberOfDoors;
     private String fuelTypes;
 
     // constructor
-    public Car(String make, String model, int year, int numberOfDoos, String fuelType) {
+    public Car(String make, String model, int year, int numberOfDoors, String fuelType) {
         this.make = make;
         this.model = model;
         this.year = year;
-        this.numberOfDoos = numberOfDoos;
+        this.numberOfDoors = numberOfDoors;
         this.fuelTypes = fuelType;
     }
 
@@ -22,8 +22,8 @@ public class Car implements Vehicle, CarVehicle {
      * @return the number of doors in the vehicle
      */
     @Override
-    public int getNumberOfDoos() {
-        return numberOfDoos;
+    public int getNumberOfDoors() {
+        return numberOfDoors;
     }
 
     /**

@@ -1,6 +1,6 @@
 
 public interface CarVehicle {
-    int getNumberOfDoos();
+    int getNumberOfDoors();
 
     String getFuelTypes();
 }
