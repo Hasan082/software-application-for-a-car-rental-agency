@@ -3,22 +3,18 @@ public class Truck implements Vehicle, TruckVehicle {
     private String make;
     private String model;
     private int year;
-    private double carcapacity;
+    private double carCapacity;
     private String transmissionType;
 
-    public Truck(String make, String model, int year, int numberOfWheels, double carcapacity, String transmissionType) {
+    public Truck(String make, String model, int year, double carCapacity, String transmissionType) {
         this.make = make;
         this.model = model;
         this.year = year;
-        this.carcapacity = carcapacity;
+        this.carCapacity = carCapacity;
         this.transmissionType = transmissionType;
     }
 
-    @Override
-    public double getCarcapacity() {
-        return carcapacity;
-    }
-
+  
     @Override
     public String getTransmissionType() {
         return transmissionType;
@@ -37,6 +33,11 @@ public class Truck implements Vehicle, TruckVehicle {
     @Override
     public int getYear() {
         return year;
+    }
+
+    @Override
+    public double getCarcapacity() {
+        return carCapacity;
     }
 
 }

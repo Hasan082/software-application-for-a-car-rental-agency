@@ -1,8 +1,43 @@
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class VehicleRentalSystem {
 
+
+    //validate user input for integer
+    public static int getIntInput(Scanner scanner, String prompt) {
+        int value;
+        while (true) {
+            System.out.print(prompt);
+            try {
+                value = scanner.nextInt();
+                scanner.nextLine(); // Consume newline character
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scanner.nextLine();
+            }
+        }
+        return value;
+    }
+    //validate user input for double
+    public static double getDoubleInput(Scanner scanner, String prompt) {
+        double value;
+        while (true) {
+            System.out.print(prompt);
+            try {
+                value = scanner.nextDouble();
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a double.");
+                scanner.nextLine();
+            }
+        }
+        return value;
+    }
+    //Main method
     public static void main(String[] args) throws Exception {
         try (Scanner scanner = new Scanner(System.in)) {
             String choice;
@@ -24,20 +59,24 @@ public class VehicleRentalSystem {
                 
                 switch (choice) {
                     case "1" -> {
+                        // Collect car details
                         Car car = collectCarDetails(scanner);
+                        // Display car details
                         displayVehicle(car);
-                        System.out.println("");//Make a space between input & display
                         break;
                     }
                     case "2" -> {
+                        // Collect motorcycle details
                         Motorcycle motorcycle = collectMotorcycleDetails(scanner);
-                        displayVehicle(motorcycle);
-                        System.out.println("");//Make a space between input & display
+                        // Display motorcycle details
+                        displayVehicle(motorcycle);                        
                         break;
                     }
                     case "3" -> {
-                        
-                        System.out.println("");//Make a space between input & display
+                        // Collect truck details
+                        Truck truck = collectTruckDetails(scanner);
+                        // Display truck details
+                        displayVehicle(truck);
                         break;
                     }
                     default -> {
@@ -52,11 +91,12 @@ public class VehicleRentalSystem {
 
     }
 
+    //Display vehicle
     private static void displayVehicle(Vehicle vehicle) {
         System.out.println("Your Vehicle Details are below:");
-        System.out.println("Make:" + vehicle.getMake());
+        System.out.println("Make: " + vehicle.getMake());
         System.out.println("Model: " + vehicle.getModel());
-        System.out.println("Year:" + vehicle.getYear());
+        System.out.println("Year: " + vehicle.getYear());
 
         if (vehicle instanceof Car car) {
             System.out.println("Number of doors: " + car.getNumberOfDoos());
@@ -64,9 +104,14 @@ public class VehicleRentalSystem {
         } else if (vehicle instanceof Motorcycle motorcycle) {
             System.out.println("Number of wheels: " + motorcycle.getNumberOfWheels());
             System.out.println("Motorcycle type: " + motorcycle.getMotorCycleType());
+        }else if(vehicle instanceof Truck truck){
+            System.out.println("Car capacity: " + truck.getCarcapacity());
+            System.out.println("Transmission type: " + truck.getTransmissionType());
         }
+        System.out.println("");//Make a space between input & display
     }
 
+    //Collect Common vehicle details
     private static VehicleDetails collectCommonDetails(Scanner scanner, String vehicleType) {
         System.out.println("");
         System.out.println("Enter " + vehicleType + " details:");
@@ -79,7 +124,7 @@ public class VehicleRentalSystem {
         scanner.nextLine();
         return new VehicleDetails(make, model, year);
     }
-    
+    //Collect Car  details
     public static Car collectCarDetails(Scanner scanner) {
         VehicleDetails vehicleDetails = collectCommonDetails(scanner, "Car");
         System.out.print("Number of doors: ");
@@ -91,7 +136,7 @@ public class VehicleRentalSystem {
         return new Car(vehicleDetails.getMake(), vehicleDetails.getModel(), vehicleDetails.getYear(), numberOfDoos, fuelType);
     }
 
-
+    //Collect Motorcycle details
     public static Motorcycle collectMotorcycleDetails(Scanner scanner) {
         VehicleDetails vehicleDetails = collectCommonDetails(scanner, "Motorcycle");
         System.out.print("Number of wheels: ");
@@ -103,6 +148,17 @@ public class VehicleRentalSystem {
         return new Motorcycle(vehicleDetails.getMake(), vehicleDetails.getModel(), vehicleDetails.getYear(), numberOfWheels, motorCycleType);
     }
 
+    //Collect Truck details
+    public static Truck collectTruckDetails(Scanner scanner) {
+        VehicleDetails vehicleDetails = collectCommonDetails(scanner, "Truck");
+        System.out.print("Car capacity: ");
+        double carcapacity = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.print("Transmission type (manual/auto): ");
+        String transmissionType = scanner.nextLine();
+        System.out.println("");//Make a space between input & display
+        return new Truck(vehicleDetails.getMake(), vehicleDetails.getModel(), vehicleDetails.getYear(), carcapacity, transmissionType);
+    }
 
     
 }
